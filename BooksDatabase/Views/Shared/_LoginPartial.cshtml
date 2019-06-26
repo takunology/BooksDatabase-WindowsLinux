@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<Page RequestEncoding="utf-8" ResponseEncoding="utf-8" />
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">ようこそ、 @UserManager.GetUserName(User) さん</a>
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">ログアウト</button>
+                </li>
+            </ul>
+        </form>
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li><a asp-area="Identity" asp-page="/Account/Register">新規登録</a></li>
+            <li><a asp-area="Identity" asp-page="/Account/Login">ログイン</a></li>
+        </ul>
+    }
+</body>
+</html>

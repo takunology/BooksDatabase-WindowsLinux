@@ -1,0 +1,84 @@
+﻿@model WebApplication1.Models.BooksFieldView
+@{
+    ViewData["Title"] = "文献一覧データベース";
+}
+
+<h2>文献一覧データベース</h2>
+登録された文献を閲覧することができます。<br />
+文献を編集するにはログインしてください。<br /> <br />
+
+<p>
+    <a asp-action="Create">
+        <input type="submit" value="文献の新規登録" class="btn btn-default">
+    </a>
+</p>
+
+<br/>
+登録されている文献の検索<br />
+<form asp-controller="Books" asp-action="Index" method="get">
+    <p>
+        分野：
+        <select asp-for="BookField" asp-items="Model.分野">
+            <option value="">全て</option>
+        </select>
+
+        　タイトル： <input type="text" name="Keywords" />
+        <input type="submit" value="検索" />
+    </p>
+</form>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].タイトル)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].著者)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].出版社)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].発行日)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].分野)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Books[0].リンク)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Books) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.タイトル)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.著者)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.出版社)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.発行日)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.分野)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.リンク)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">編集</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">概要</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">削除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

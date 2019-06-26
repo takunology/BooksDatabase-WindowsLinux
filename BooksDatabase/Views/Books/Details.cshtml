@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.Books
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>文献の概要</h2>
+
+<div>
+    <h4>この文献の概要です。</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.タイトル)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.タイトル)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.著者)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.著者)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.出版社)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.出版社)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.発行日)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.発行日)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.分野)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.分野)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.リンク)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.リンク)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">編集</a> |
+    <a asp-action="Index">文献一覧に戻る</a>
+</div>

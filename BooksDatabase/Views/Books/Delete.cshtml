@@ -1,0 +1,57 @@
+﻿@model WebApplication1.Models.Books
+
+@{
+    ViewData["Title"] = "文献の削除";
+}
+
+<h2>文献の削除</h2>
+
+<h4>この文献を削除しますか？</h4>
+<div>
+<br />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.タイトル)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.タイトル)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.著者)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.著者)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.出版社)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.出版社)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.発行日)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.発行日)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.分野)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.分野)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.リンク)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.リンク)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="削除する" class="btn btn-default" /> |
+        <a asp-action="Index">文献一覧に戻る</a>
+    </form>
+</div>

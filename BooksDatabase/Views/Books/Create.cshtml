@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.Books
+
+@{
+    ViewData["Title"] = "文献の新規登録";
+}
+
+<h2>文献の新規登録</h2>
+
+<h4>文献データを入力フォームに従って登録してください</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="タイトル" class="control-label"></label>
+                <input asp-for="タイトル" class="form-control" />
+                <span asp-validation-for="タイトル" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="著者" class="control-label"></label>
+                <input asp-for="著者" class="form-control" />
+                <span asp-validation-for="著者" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="出版社" class="control-label"></label>
+                <input asp-for="出版社" class="form-control" />
+                <span asp-validation-for="出版社" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="発行日" class="control-label"></label>
+                <input asp-for="発行日" class="form-control" />
+                <span asp-validation-for="発行日" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="分野" class="control-label"></label>
+                <input asp-for="分野" class="form-control" />
+                <span asp-validation-for="分野" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="リンク" class="control-label"></label>
+                <input asp-for="リンク" class="form-control" />
+                <span asp-validation-for="リンク" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="登録" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">文献一覧に戻る</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
